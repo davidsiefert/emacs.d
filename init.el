@@ -14,6 +14,7 @@
     (package-install package)))
 
 (defun go-mode-hooks ()
+  (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   (local-set-key (kbd "M-.") 'godef-jump)
   (local-set-key (kbd "M-*") 'pop-tag-mark)
