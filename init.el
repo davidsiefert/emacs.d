@@ -4,7 +4,7 @@
 
 (package-initialize)
 
-(setq package-list '(go-mode exec-path-from-shell))
+(setq package-list '(go-mode exec-path-from-shell auto-complete go-autocomplete))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -16,8 +16,10 @@
 (defun go-mode-hooks ()
   (add-hook 'before-save-hook 'gofmt-before-save)
   (local-set-key (kbd "M-.") 'godef-jump)
-  (local-set-key (kbd "M-*") 'pop-tag-mark))
+  (local-set-key (kbd "M-*") 'pop-tag-mark)
+  (auto-complete-mode 1))
 (add-hook 'go-mode-hook 'go-mode-hooks)
+(with-eval-after-load 'go-mode (require 'go-autocomplete))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
