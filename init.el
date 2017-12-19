@@ -17,7 +17,10 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
   (local-set-key (kbd "M-.") 'godef-jump)
   (local-set-key (kbd "M-*") 'pop-tag-mark)
-  (auto-complete-mode 1))
+  (auto-complete-mode 1)
+  (if (not (string-match "go" compile-command))
+      (set (make-local-variable 'compile-command)
+	   "go build -v && go test -v && go vet")))
 (add-hook 'go-mode-hook 'go-mode-hooks)
 (with-eval-after-load 'go-mode (require 'go-autocomplete))
 
