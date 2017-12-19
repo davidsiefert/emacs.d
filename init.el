@@ -13,7 +13,11 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-(add-hook 'before-save-hook 'gofmt-before-save)
+(defun go-mode-hooks ()
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (local-set-key (kbd "M-.") 'godef-jump)
+  (local-set-key (kbd "M-*") 'pop-tag-mark))
+(add-hook 'go-mode-hook 'go-mode-hooks)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
