@@ -4,7 +4,8 @@
 
 (package-initialize)
 
-(setq package-list '(go-mode exec-path-from-shell auto-complete go-autocomplete flycheck go-eldoc))
+(setq package-list '(go-mode exec-path-from-shell auto-complete go-autocomplete flycheck go-eldoc yasnippet go-snippets))
+;; I manually symlinked the go-mode snippets to the default snippets dir path
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -12,6 +13,8 @@
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
+
+(yas-global-mode)
 
 (defun go-mode-hooks ()
   (setq gofmt-command "goimports")
