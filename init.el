@@ -4,7 +4,7 @@
 
 (package-initialize)
 
-(setq package-list '(go-mode exec-path-from-shell auto-complete go-autocomplete flycheck))
+(setq package-list '(go-mode exec-path-from-shell auto-complete go-autocomplete flycheck go-eldoc))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -21,6 +21,8 @@
   (local-set-key (kbd "M-.") 'godef-jump)
   (local-set-key (kbd "M-*") 'pop-tag-mark)
   (auto-complete-mode 1)
+  (require 'go-eldoc)
+  (go-eldoc-setup)
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
 	   "go build -v && go test -v && go vet")))
