@@ -4,7 +4,7 @@
 
 (package-initialize)
 
-(setq package-list '(go-mode exec-path-from-shell auto-complete go-autocomplete))
+(setq package-list '(go-mode exec-path-from-shell auto-complete go-autocomplete flycheck))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -17,6 +17,7 @@
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   (linum-mode)
+  (flycheck-mode)
   (local-set-key (kbd "M-.") 'godef-jump)
   (local-set-key (kbd "M-*") 'pop-tag-mark)
   (auto-complete-mode 1)
