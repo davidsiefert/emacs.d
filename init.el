@@ -4,7 +4,7 @@
 
 (package-initialize)
 
-(setq package-list '(go-mode exec-path-from-shell auto-complete go-autocomplete flycheck go-eldoc yasnippet go-snippets))
+(setq package-list '(go-mode exec-path-from-shell auto-complete go-autocomplete flycheck go-eldoc yasnippet go-snippets go-guru))
 ;; I manually symlinked the go-mode snippets to the default snippets dir path
 
 (unless package-archive-contents
@@ -26,6 +26,8 @@
   (auto-complete-mode 1)
   (require 'go-eldoc)
   (go-eldoc-setup)
+  (require 'go-guru)
+  (go-guru-hl-identifier-mode)
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
 	   "go build -v && go test -v && go vet")))
