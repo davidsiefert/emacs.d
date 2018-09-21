@@ -1,3 +1,7 @@
+;; TODO run these commands if keyed exec does not exist:
+;; goimports=go get golang.org/x/tools/cmd/goimports
+;; godef=go get github.com/rogpeppe/godef
+
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
